@@ -22,4 +22,9 @@ This function takes `cv::Mat` constant reference as input and returns a new `af:
 
 Both functions do not allocate any extra dynamic memory, so users do not need to free anything just use the returned data until it is alive within its scope. 
 
+Here are some examples of using `Converter` class:
+
+```cpp
+
+```
 
