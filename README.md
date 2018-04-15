@@ -27,6 +27,12 @@ Both functions do not allocate any extra dynamic memory, so users do not need to
 Here are some examples of using `Converter` class:
 
 ```cpp
+// conversion from af::array to cv::Mat 
 
+af::array input = af::loadImage(filename);
+// converting af::array to cv::Mat
+cv::Mat output = Converter::af2mat(input);
+// displaying cv::Mat
+cv::imshow("Output in OPENCV",output);
 ```
 
