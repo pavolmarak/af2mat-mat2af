@@ -3,6 +3,8 @@
 
 Please keep in mind that this conversion utility **works only for grayscale images**.
 
+![alt text](img/app_1_0_0.png "Application's user interface")
+
 This project **depends** on these 3rd-party libraries:
 * ArrayFire 3.5.1 (tested)
 * OpenCV 3.4.1 (tested)
