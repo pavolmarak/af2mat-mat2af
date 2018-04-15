@@ -7,15 +7,18 @@ This project **depends** on these 3rd-party libraries:
 
 This project contains a class called `Converter` that has 2 static member functions to perform conversion as follows:
 
+
 ```cpp
 cv::Mat af2mat(const af::array& input);
 ```
 This function takes `af::array` constant reference as input and returns a new `cv::Mat` containing a deep copy of input data. 
 
+
 ```cpp
 af::array mat2af(const cv::Mat& input);
 ```
 This function takes `cv::Mat` constant reference as input and returns a new `af::array` containing a deep copy of input data. 
+
 
 Both functions do not allocate any extra dynamic memory, so users do not need to free anything just use the returned data until it is alive within its scope. 
 
