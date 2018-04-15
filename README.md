@@ -8,11 +8,11 @@ This project **depends** on these 3rd-party libraries:
 This project contains a class called `Converter` that has 2 static member function to perform conversion. 
 
 ```cpp
-void af2mat();
+cv::Mat af2mat(const af::array& input);
 ```
 
 ```cpp
-void mat2af();
+af::array mat2af(const cv::Mat& input);
 ```
 
 
