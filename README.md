@@ -26,9 +26,9 @@ Both functions do not allocate any extra dynamic memory, so users do not need to
 
 Here are some examples of using `Converter` class:
 
-```cpp
-// conversion from af::array to cv::Mat 
+**Conversion from `af::array` to `cv::Mat`** 
 
+```cpp
 af::array input = af::loadImage(filename);
 // converting af::array to cv::Mat
 cv::Mat output = Converter::af2mat(input);
@@ -36,9 +36,9 @@ cv::Mat output = Converter::af2mat(input);
 cv::imshow("Output in OPENCV",output);
 ```
 
-```cpp
-// conversion from cv::Mat to af::array
+**Conversion from `cv::Mat` to `af::array`** 
 
+```cpp
 // loading grayscale image
 cv::Mat input = cv::imread(filename,cv::IMREAD_GRAYSCALE);
 // converting cv::Mat to af::array
