@@ -11,6 +11,7 @@ This project contains a class called `Converter` that has 2 static member functi
 cv::Mat af2mat(const af::array& input);
 ```
 This function takes `af::array` constant reference as input and returns a new `cv::Mat` containing a deep copy of input data. 
+
 ```cpp
 af::array mat2af(const cv::Mat& input);
 ```
