@@ -6,8 +6,8 @@ Please keep in mind that this conversion utility **works only for grayscale imag
 ![alt text](img/app_1_0_0.png "Application's user interface")
 
 This project **depends** on these 3rd-party libraries:
-* ArrayFire 3.5.1 (tested)
-* OpenCV 3.4.1 (tested)
+* [ArrayFire 3.5.1](https://github.com/arrayfire/arrayfire) (tested)
+* [OpenCV 3.4.1](https://opencv.org/releases.html) (tested)
 
 This project contains a class called `Converter` that has 2 static member functions to perform conversion as follows:
 
