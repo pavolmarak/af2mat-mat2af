@@ -36,3 +36,19 @@ cv::Mat output = Converter::af2mat(input);
 cv::imshow("Output in OPENCV",output);
 ```
 
+```cpp
+// conversion from cv::Mat to af::array
+
+// loading grayscale image
+cv::Mat input = cv::imread(filename,cv::IMREAD_GRAYSCALE);
+// converting cv::Mat to af::array
+af::array output = Converter::mat2af(input);
+// displaying af::array
+af::Window window(output.dims(1), output.dims(0), "Output in ARRAYFIRE");
+do
+  {
+    window.image(output);
+  } 
+while(!window.close());
+```
+
