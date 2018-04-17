@@ -10,7 +10,7 @@ Converter::Converter()
 cv::Mat Converter::af2mat(const af::array &input)
 {
     uchar* data = input.as(u8).T().host<uchar>();
-    cv::Mat output((int)input.dims(0), (int)input.dims(1), CV_8UC1, data);
+    cv::Mat output = cv::Mat((int)input.dims(0), (int)input.dims(1), CV_8UC1, data).clone();
     af::freeHost(data);
     return output;
 }
