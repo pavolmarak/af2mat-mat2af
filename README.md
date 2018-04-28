@@ -1,7 +1,7 @@
 # AF2MAT and MAT2AF
 **Conversion functions** to help pass data between ArrayFire's `af::array` object and OpenCV's `cv::Mat`. In this Qt project we demonstrate possibility to pass **grayscale** (fingerprint) image data from `af::array` to `cv::Mat` and vice-versa. It is very common to use both ArrayFire and OpenCV library in image processing applications and therefore we find it helpful to provide these convenience conversion functions.
 
-Please keep in mind that this conversion utility **works only for grayscale images**.
+Please keep in mind that this conversion utility **works only for grayscale images**. To avoid errors, conversion functions check the image type and if not correct they raise exceptions.
 
 ![alt text](img/app_1_0_0.png "Application's user interface")
 
