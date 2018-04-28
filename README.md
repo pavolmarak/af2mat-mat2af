@@ -33,11 +33,17 @@ Here are some examples of using `Converter` class:
 **Conversion from `af::array` to `cv::Mat`** 
 
 ```cpp
-af::array input = af::loadImage(filename);
-// converting af::array to cv::Mat
-cv::Mat output = Converter::af2mat(input);
-// displaying cv::Mat
-cv::imshow("Output in OPENCV",output);
+// loading grayscale image
+af::array input = af::loadImage(filename).as(u8);
+try{
+    // converting af::array to cv::Mat
+    cv::Mat output = Converter::af2mat(input);
+    // displaying cv::Mat
+    cv::imshow("Output in OPENCV",output);
+}
+catch(QString& errorString){
+    qCritical() << errorString;
+}
 ```
 
 **Conversion from `cv::Mat` to `af::array`** 
