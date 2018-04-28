@@ -24,11 +24,16 @@ void MainWindow::test_af2mat(const char* filename)
 {
     try{
         // loading grayscale image
-        af::array input = af::loadImage(filename);
-        // converting af::array to cv::Mat
-        cv::Mat output = Converter::af2mat(input);
-        // displaying cv::Mat
-        cv::imshow("Output in OPENCV",output);
+        af::array input = af::loadImage(filename).as(u8);
+        try{
+            // converting af::array to cv::Mat
+            cv::Mat output = Converter::af2mat(input);
+            // displaying cv::Mat
+            cv::imshow("Output in OPENCV",output);
+        }
+        catch(QString& errorString){
+            qCritical() << errorString;
+        }
     }
     catch(af::exception& exc){
         qDebug() << exc.what();
@@ -40,13 +45,18 @@ void MainWindow::test_mat2af(const char* filename)
     try{
         // loading grayscale image
         cv::Mat input = cv::imread(filename,cv::IMREAD_GRAYSCALE);
-        // converting cv::Mat to af::array
-        af::array output = Converter::mat2af(input);
-        // displaying af::array
-        af::Window window(output.dims(1), output.dims(0), "Output in ARRAYFIRE");
-        do{
-            window.image(output);
-        } while(!window.close());
+        try{
+            // converting cv::Mat to af::array
+            af::array output = Converter::mat2af(input);
+            // displaying af::array
+            af::Window window(output.dims(1), output.dims(0), "Output in ARRAYFIRE");
+            do{
+                window.image(output);
+            } while(!window.close());
+        }
+        catch(QString& errorString){
+            qCritical() << errorString;
+        }
     }
     catch(af::exception& exc){
         qDebug() << exc.what();
