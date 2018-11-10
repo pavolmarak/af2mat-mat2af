@@ -35,16 +35,15 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-# afcuda
+# ArrayFire with CUDA backend
 unix|win32: LIBS += -L'C:/Program Files/ArrayFire/v3/lib/' -lafcuda
 
 INCLUDEPATH += 'C:/Program Files/ArrayFire/v3/include'
 DEPENDPATH += 'C:/Program Files/ArrayFire/v3/include'
 
-#opencv
-win32:CONFIG(release, debug|release): LIBS += -LC:/opencv/build/x64/vc15/lib/ -lopencv_world341
-else:win32:CONFIG(debug, debug|release): LIBS += -LC:/opencv/build/x64/vc15/lib/ -lopencv_world341d
-else:unix: LIBS += -LC:/opencv/build/x64/vc15/lib/ -lopencv_world341
+# OpenCV
+win32:CONFIG(release, debug|release): LIBS += -L'C:/Program Files/opencv/build/x64/vc15/lib/' -lopencv_world343
+else:win32:CONFIG(debug, debug|release): LIBS += -L'C:/Program Files/opencv/build/x64/vc15/lib/' -lopencv_world343d
 
-INCLUDEPATH += C:/opencv/build/include
-DEPENDPATH += C:/opencv/build/include
+INCLUDEPATH += 'C:/Program Files/opencv/build/include'
+DEPENDPATH += 'C:/Program Files/opencv/build/include'

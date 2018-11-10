@@ -84,7 +84,7 @@ void MainWindow::on_af2mat_clicked()
     }
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_loadBtn_clicked()
 {
     if(this->filename){
         delete [] this->filename;

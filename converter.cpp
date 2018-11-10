@@ -33,11 +33,26 @@
 //    u16 	16-bit unsigned integral values
 
 
+// Differences in memory layout between af::array and cv::Mat
+//
+// af::array has a column-major layout
+//
+// 1 4 7
+// 2 5 8
+// 3 6 9
+//
+// cv::Mat has a row-major layout
+//
+// 1 2 3
+// 4 5 6
+// 7 8 9
+
 Converter::Converter()
 {
 
 }
 
+// function to convert 1-channel af::array to cv::Mat
 cv::Mat Converter::af2mat(const af::array &input)
 {
     if(input.type() != u8){
@@ -49,6 +64,7 @@ cv::Mat Converter::af2mat(const af::array &input)
     return output;
 }
 
+// function to convert 1-channel cv::Mat to af::array
 af::array Converter::mat2af(const cv::Mat &input)
 {
     if(input.type() != CV_8UC1){

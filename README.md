@@ -6,31 +6,46 @@ Please keep in mind that this conversion utility **works only for grayscale imag
 ![alt text](img/app_1_0_0.png "Application's user interface")
 
 This project **depends** on these 3rd-party libraries:
-* [ArrayFire 3.5.1](https://github.com/arrayfire/arrayfire) (tested)
-* [OpenCV 3.4.1](https://opencv.org/releases.html) (tested)
+* [ArrayFire 3.6.1](https://github.com/arrayfire/arrayfire) (tested)
+* [OpenCV 3.4.3](https://opencv.org/releases.html) (tested)
 
-You need to provide valid paths to these libraries and their header files in .pro file.
+You need to provide valid paths to these libraries and their header files in `.pro` file. Your `.pro` file should look like as follows (in Windows 10):
 
-This project contains a class called `Converter` that has 2 static member functions to perform conversion as follows:
+```bash
+# ArrayFire with CUDA backend
+unix|win32: LIBS += -L'C:/Program Files/ArrayFire/v3/lib/' -lafcuda
+
+INCLUDEPATH += 'C:/Program Files/ArrayFire/v3/include'
+DEPENDPATH += 'C:/Program Files/ArrayFire/v3/include'
+
+# OpenCV
+win32:CONFIG(release, debug|release): LIBS += -L'C:/Program Files/opencv/build/x64/vc15/lib/' -lopencv_world343
+else:win32:CONFIG(debug, debug|release): LIBS += -L'C:/Program Files/opencv/build/x64/vc15/lib/' -lopencv_world343d
+
+INCLUDEPATH += 'C:/Program Files/opencv/build/include'
+DEPENDPATH += 'C:/Program Files/opencv/build/include'
+```
+
+This project contains a class called `Converter` that has 2 static member functions to perform conversion:
 
 
 ```cpp
 cv::Mat af2mat(const af::array& input);
 ```
-This function takes `af::array` constant reference as input and returns a new `cv::Mat` containing a deep copy of input data. 
+This function takes `af::array` constant reference as input and returns a new `cv::Mat` containing a deep copy of input data.
 
 
 ```cpp
 af::array mat2af(const cv::Mat& input);
 ```
-This function takes `cv::Mat` constant reference as input and returns a new `af::array` containing a deep copy of input data. 
+This function takes `cv::Mat` constant reference as input and returns a new `af::array` containing a deep copy of input data.
 
 
-Both functions do not allocate any extra dynamic memory, so users do not need to free anything just use the returned data until it is alive within its scope. 
+Both functions do not allocate any extra dynamic memory, so users do not need to free anything just use the returned data until it is alive within its scope.
 
 Here are some examples of using `Converter` class:
 
-**Conversion from `af::array` to `cv::Mat`** 
+**Conversion from `af::array` to `cv::Mat`**
 
 ```cpp
 // loading grayscale image
@@ -46,7 +61,7 @@ catch(QString& errorString){
 }
 ```
 
-**Conversion from `cv::Mat` to `af::array`** 
+**Conversion from `cv::Mat` to `af::array`**
 
 ```cpp
 // loading grayscale image
@@ -64,4 +79,3 @@ catch(QString& errorString){
     qCritical() << errorString;
 }
 ```
-

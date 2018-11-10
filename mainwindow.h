@@ -21,7 +21,7 @@ private slots:
 
     void on_af2mat_clicked();
 
-    void on_pushButton_clicked();
+    void on_loadBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
